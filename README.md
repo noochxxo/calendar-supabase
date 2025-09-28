@@ -27,7 +27,13 @@ TODO:
   - add search
   - edit and delete events
   - send event invites
+  - fix load on signin, a refresh is needed to have updated UI
 
+The database was working,
+theres an issue with getting events by users id
 
+account with events
+  emain: test@test.com
+  password: test1234
 
 Submission isn't complete
