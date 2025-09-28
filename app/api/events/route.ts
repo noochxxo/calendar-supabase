@@ -11,7 +11,7 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const events = await CalendarService.getEventsByUserId(currentUser.supabaseUserId);
+    const events = await CalendarService.getEventsByUserId(currentUser.id);
     return NextResponse.json(events );
 
   } catch (error) {

@@ -11,6 +11,7 @@ import { insertCalendarSchema, insertUserSchema } from "@/lib/validations";
 import { formatError } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/server";
 import { CalendarService } from "@/lib/services/calendar.service";
+import { createSampleEventsForNewUser } from "@/seed/sample-events.seed";
 
 export async function signInWithCredentials(
   prevState: unknown,
@@ -130,6 +131,9 @@ export async function signUpUser(prevState: unknown, formData: FormData) {
           );
           console.log("Default calendar created", defaultCalendar.id);
 
+          if (defaultCalendar.id) {
+            await createSampleEventsForNewUser(dbUser.id);
+          }
           
         } catch (calendarError) {
           console.error("Failed to create default calendar:", calendarError);
