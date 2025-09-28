@@ -1,4 +1,5 @@
 import { CalendarService } from '@/lib/services/calendar.service';
+type EventType =  "VEVENT" | "VTODO" | "VJOURNAL" | "VFREEBUSY" | "UNKNOWN"
 
 export async function createSampleEventsForNewUser(userId: string) {
   try {
@@ -64,7 +65,7 @@ export async function createSampleEventsForNewUser(userId: string) {
       await CalendarService.createEvent({
         calendarId: defaultCalendar.id,
         uid: `sample-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
-        type: event.type || 'VEVENT',
+        type: event.type as EventType,
         summary: event.title,
         description: event.desc,
         dtstart: startDate,
